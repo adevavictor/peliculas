@@ -1,0 +1,18 @@
+div(ui-view='menu')
+.container.mt-4.mb-4.p-4
+  form.form-inline.justify-content-center.mb-4
+    .form-group.mx-sm-3
+      input.form-control(type='text', ng-model='vm.pelicula', placeholder='Busca tu película...')
+    button.btn.btn-dark(type='submit', ng-click='vm.buscar(vm.pelicula)') Buscar
+  #peliculas
+    div(ng-if='!vm.peliculas')
+      | No hay películas que mostrar
+    .row(ng-if='vm.peliculas')
+      .col-4(ng-repeat='pelicula in vm.peliculas')
+        .card
+          a(ui-sref='detalle({ id: pelicula.imdbID })')
+            img.card-img-top.img-fluid(src='{{ pelicula.Poster }}', style='max-width: 350px')
+          .card-body.text-center
+            h6.card-title {{ pelicula.Title }}
+            p.card-text {{ pelicula.Type }} - {{ pelicula.Year }}
+            a.btn.btn-dark(ui-sref='detalle({ id: pelicula.imdbID })') Ver película

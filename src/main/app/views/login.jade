@@ -1,0 +1,16 @@
+div(ui-view='menu')
+.container.d-flex.h-100.flex-column
+  .flex-grow-1
+  .row.justify-content-center
+    .col-10.col-sm-10.col-md-6
+      form(name='loginForm')
+        .form-group
+          label(for='usuario') Usuario:
+          input.form-control(type='text', name='usuario', autocomplete='usuario', ng-model='usuario', required)
+        .form-group
+          label(for='password') Contraseña:
+          input.form-control(type='password', name='password', autocomplete='password', ng-model='password', required)
+        button.btn.btn-dark.mb-4(type='submit', ng-disabled='loginForm.$invalid', ng-click='vm.login(usuario, password, vm.guardarCredenciales)') Entrar
+        .alert.alert-danger.mt-4.mb-4(ng-show='loginForm.$submitted && vm.loginIncorrecto')
+          span Credenciales incorrectas
+  .flex-grow-1

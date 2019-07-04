@@ -1,0 +1,10 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  a.navbar-brand(href='/') PELÍCULAS
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarText', aria-controls='navbarText', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse(ng-show='vm.mostrarNavegacion')
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(ui-sref='buscar') Buscar
+      li.nav-item.active
+        a.nav-link(ui-sref='favoritos') Favoritos

@@ -1,0 +1,50 @@
+div(ui-view='menu')
+.container.mt-4.mb-4.p-4
+  .row
+    .col-12.col-sm-12.col-md-4.text-center
+      img.img-fluid(src='{{ vm.pelicula.Poster }}')
+      button.btn.btn-warning.mt-4.mb-4(type='button', ng-if='!vm.favorita', ng-click='vm.aniadirFavorito()')
+        | Añadir a favoritos
+      button.btn.btn-warning.mt-4.mb-4(type='button', ng-if='vm.favorita', ng-click='vm.eliminarFavorita()')
+        | Eliminar de favoritos
+    .col-12.col-sm-12.col-md-8
+      .mb-4
+        h3.pb-2 {{ vm.pelicula.Title }}
+        span
+          b Año: 
+          | {{ vm.pelicula.Year }}
+        br
+        span
+          b Tipo: 
+          | {{ vm.pelicula.Genre }}
+        br
+        span
+          b Director: 
+          | {{ vm.pelicula.Director }}
+        br
+        span
+          b Actores: 
+          | {{ vm.pelicula.Actors }}
+        br
+        span
+          b Producción: 
+          | {{ vm.pelicula.Production }}
+        br
+        span
+          b Duración: 
+          | {{ vm.pelicula.Runtime }}
+      .mt-4.mb-4
+        h3.pb-2 Sinopsis
+        p {{ vm.pelicula.Plot }}
+      .mt-4.mb-4
+        h3.pb-2 Valoraciones
+        span
+          b IMDB: 
+          | {{ vm.pelicula.imdbRating }} ({{ vm.pelicula.imdbVotes }} votos)
+        br
+        span(ng-repeat='valoracion in vm.pelicula.Ratings')
+          b {{ valoracion.Source }}: 
+          | {{ valoracion.Value }}
+          br
+  .text-center.mt-4.mb-4
+    button.btn.btn-dark(type='button', ng-click='vm.volver()') Volver

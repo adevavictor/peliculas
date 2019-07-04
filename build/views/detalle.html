@@ -1,0 +1,25 @@
+
+<div ui-view="menu"></div>
+<div class="container mt-4 mb-4 p-4">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-4 text-center"><img src="{{ vm.pelicula.Poster }}" class="img-fluid"/>
+      <button type="button" ng-if="!vm.favorita" ng-click="vm.aniadirFavorito()" class="btn btn-warning mt-4 mb-4">Añadir a favoritos</button>
+      <button type="button" ng-if="vm.favorita" ng-click="vm.eliminarFavorita()" class="btn btn-warning mt-4 mb-4">Eliminar de favoritos</button>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8">
+      <div class="mb-4">
+        <h3 class="pb-2">{{ vm.pelicula.Title }}</h3><span><b>Año: </b>{{ vm.pelicula.Year }}</span><br/><span><b>Tipo: </b>{{ vm.pelicula.Genre }}</span><br/><span><b>Director: </b>{{ vm.pelicula.Director }}</span><br/><span><b>Actores: </b>{{ vm.pelicula.Actors }}</span><br/><span><b>Producción: </b>{{ vm.pelicula.Production }}</span><br/><span><b>Duración: </b>{{ vm.pelicula.Runtime }}</span>
+      </div>
+      <div class="mt-4 mb-4">
+        <h3 class="pb-2">Sinopsis</h3>
+        <p>{{ vm.pelicula.Plot }}</p>
+      </div>
+      <div class="mt-4 mb-4">
+        <h3 class="pb-2">Valoraciones</h3><span><b>IMDB: </b>{{ vm.pelicula.imdbRating }} ({{ vm.pelicula.imdbVotes }} votos)</span><br/><span ng-repeat="valoracion in vm.pelicula.Ratings"><b>{{ valoracion.Source }}: </b>{{ valoracion.Value }}<br/></span>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" ng-click="vm.volver()" class="btn btn-dark">Volver</button>
+  </div>
+</div>

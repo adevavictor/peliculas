@@ -1,0 +1,15 @@
+
+<div ui-view="menu"></div>
+<div class="container mt-4 mb-4 p-4">
+  <div ng-if="!vm.peliculas">No se han añadido películas a favoritos</div>
+  <div ng-if="vm.peliculas" class="row">
+    <div ng-repeat="pelicula in vm.peliculas" class="col-4">
+      <div class="card"><a ui-sref="detalle({ id: pelicula.imdbID })"><img src="{{ pelicula.Poster }}" style="max-width: 350px" class="card-img-top img-fluid"/></a>
+        <div class="card-body text-center">
+          <h6 class="card-title">{{ pelicula.Title }}</h6>
+          <p class="card-text">{{ pelicula.Type }} - {{ pelicula.Year }}</p><a ui-sref="detalle({ id: pelicula.imdbID })" class="btn btn-dark">Ver película</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

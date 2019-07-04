@@ -1,0 +1,23 @@
+
+<div ui-view="menu"></div>
+<div class="container mt-4 mb-4 p-4">
+  <form class="form-inline justify-content-center mb-4">
+    <div class="form-group mx-sm-3">
+      <input type="text" ng-model="vm.pelicula" placeholder="Busca tu película..." class="form-control"/>
+    </div>
+    <button type="submit" ng-click="vm.buscar(vm.pelicula)" class="btn btn-dark">Buscar</button>
+  </form>
+  <div id="peliculas">
+    <div ng-if="!vm.peliculas">No hay películas que mostrar</div>
+    <div ng-if="vm.peliculas" class="row">
+      <div ng-repeat="pelicula in vm.peliculas" class="col-4">
+        <div class="card"><a ui-sref="detalle({ id: pelicula.imdbID })"><img src="{{ pelicula.Poster }}" style="max-width: 350px" class="card-img-top img-fluid"/></a>
+          <div class="card-body text-center">
+            <h6 class="card-title">{{ pelicula.Title }}</h6>
+            <p class="card-text">{{ pelicula.Type }} - {{ pelicula.Year }}</p><a ui-sref="detalle({ id: pelicula.imdbID })" class="btn btn-dark">Ver película</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
